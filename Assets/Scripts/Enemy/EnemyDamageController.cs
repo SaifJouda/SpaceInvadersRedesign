@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyDamageController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject mainController;
     //General Stats
     public int maxHealth = 1;
     public int currentHealth;
@@ -15,6 +16,7 @@ public class EnemyDamageController : MonoBehaviour
         //////////////
         // V V Monitor if experience lag when loading levels with large amounts of enemies
         player=GameObject.Find("Player");
+        mainController=GameObject.Find("Main Controller");
     }
 
     public void ChangeHealth(int amount)
@@ -33,6 +35,7 @@ public class EnemyDamageController : MonoBehaviour
 
     void Die()
     {
+        mainController.GetComponent<LevelController>().UpdateKillCount();
         player.GetComponent<ScoreController>().score += 10;
         Destroy(gameObject);
     }
