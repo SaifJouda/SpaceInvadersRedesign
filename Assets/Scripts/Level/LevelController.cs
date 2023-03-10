@@ -9,6 +9,7 @@ public class LevelController : MonoBehaviour
     public GameObject enemyPrefab1;
     int level=1;
     int enemiesRemaining;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void InitiateLevel()
@@ -29,29 +30,13 @@ public class LevelController : MonoBehaviour
         switch(level)
         {
             case 1:
-                x=-16;
-                y=5;
-                for(int i=0;i<=16;i++)
-                {
-                    Instantiate(enemyPrefab1, new Vector2(x,y), transform.rotation);
-                    x+=2;
-                }
-                enemiesRemaining=16;
+                SummonRowOfEnemies(15,-11.25f,5f);
+                enemiesRemaining=15;
                 break;
             case 2:
-                x=-16;
-                y=5;
-                for(int i=0;i<=32;i++)
-                {
-                    Instantiate(enemyPrefab1, new Vector2(x,y), transform.rotation);
-                    x+=2;
-                    if(x==18)
-                    {
-                        x=-16;
-                        y+=1.5f;
-                    }
-                }
-                enemiesRemaining=32;
+                SummonRowOfEnemies(15,-11.25f,5f);
+                SummonRowOfEnemies(15,-11.25f,6.5f);
+                enemiesRemaining=30;
                 break;
             case 3:
             
@@ -87,6 +72,17 @@ public class LevelController : MonoBehaviour
 
         }
 
+    }
+
+    private void SummonRowOfEnemies(int numEnemies, float xPos, float yPos)
+    {
+        float x=xPos;
+        float y=yPos;
+        for(int i=0;i<=numEnemies;i++)
+        {
+            Instantiate(enemyPrefab1, new Vector2(x,y), transform.rotation);
+            x+=1.5f;
+        }
     }
 
     public void UpdateKillCount()
