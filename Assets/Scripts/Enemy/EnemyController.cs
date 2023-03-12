@@ -10,13 +10,15 @@ public class EnemyController : MonoBehaviour
     int stepCounter=8;
     int horizontal=1;
 
-    private float moveCooldown = 0.5f;
+    private float moveCooldown = 0.1f;
     float moveCooldownTimer;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         moveCooldownTimer=moveCooldown;
+        player=GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -39,6 +41,10 @@ public class EnemyController : MonoBehaviour
             }
             moveCooldownTimer=moveCooldown;
             rigidbody2d.MovePosition(position);
+        }
+        if(transform.position.y <=-6)
+        {
+            player.GetComponent<PlayerDamageController>().ChangeHealth(-10);
         }
     }
 }
