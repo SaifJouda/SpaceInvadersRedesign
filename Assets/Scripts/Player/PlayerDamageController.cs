@@ -6,13 +6,13 @@ using UnityEngine.Events;
 public class PlayerDamageController : MonoBehaviour
 {
     //General Stats
-    public int maxHealth = 1;
+    public int maxHealth = 5;
     public int currentHealth;
     public UnityEvent OnDead;
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = 3;
     }
 
     void Update()
@@ -29,6 +29,7 @@ public class PlayerDamageController : MonoBehaviour
             return;
 
         currentHealth +=amount;
+        if(currentHealth>maxHealth) currentHealth=maxHealth;
 
         if(currentHealth<=0)
         {

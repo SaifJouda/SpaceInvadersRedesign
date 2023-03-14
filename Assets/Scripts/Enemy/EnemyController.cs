@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    float speed = 1.0f;
+    float speedX = 1.0f;
+    public float speedY=1.0f;
     int steps = 16;
     Rigidbody2D rigidbody2d;
     int stepCounter=8;
     int horizontal=1;
 
-    private float moveCooldown = 0.1f;
+    private float moveCooldown = 0.5f;
     float moveCooldownTimer;
     GameObject player;
     // Start is called before the first frame update
@@ -30,12 +31,12 @@ public class EnemyController : MonoBehaviour
         {
             if(stepCounter<steps)
             {
-                position.x = position.x + speed * horizontal;
+                position.x = position.x + speedX * horizontal;
                 stepCounter++;
             }
             else
             {
-                position.y = position.y + speed * -1;
+                position.y = position.y + speedY * -1;
                 stepCounter=0;
                 horizontal*=-1;
             }

@@ -6,7 +6,15 @@ public class EnemyShooting : MonoBehaviour
 {
     //Attack Cooldow
     public GameObject projectileGameObject;
+    public float attackCoolDownMin=10f;
+    public float attackCoolDownMax=30f;
     float attackCooldownTimer=0;
+
+
+    void Start()
+    {
+        attackCooldownTimer=Random.Range(attackCoolDownMin,attackCoolDownMax);
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -15,7 +23,7 @@ public class EnemyShooting : MonoBehaviour
         if(attackCooldownTimer<=0)
         {
             Shoot();
-            attackCooldownTimer=Random.Range(5.0f,15f);
+            attackCooldownTimer=Random.Range(attackCoolDownMin,attackCoolDownMax);
         }
         
     }

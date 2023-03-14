@@ -9,6 +9,7 @@ public class EnemyDamageController : MonoBehaviour
     //General Stats
     public int maxHealth = 1;
     public int currentHealth;
+    public int score= 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +37,7 @@ public class EnemyDamageController : MonoBehaviour
     void Die()
     {
         mainController.GetComponent<LevelController>().UpdateKillCount();
-        player.GetComponent<ScoreController>().score += 10;
+        player.GetComponent<ScoreController>().score += score;
         Destroy(gameObject);
     }
 }
