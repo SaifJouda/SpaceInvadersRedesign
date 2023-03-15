@@ -101,8 +101,19 @@ public class LevelController : MonoBehaviour
                 enemiesRemaining=4;
                 break;
             case 12:
-                SummonBoss(new Vector2(0,6f), 30, 100, 1, 2);
-                enemiesRemaining=1;
+                SummonRowOfEnemies(5,-11.25f,5f);
+                SummonRowOfEnemies(5,3.75f,5f);
+                SummonRowOfEnemies(15,-11.25f,3f);
+                SummonRowOfEnemies(15,-11.25f,1f);
+                SummonBoss(new Vector2(0,5f), 15, 100, 1, 3);
+                enemiesRemaining=41;
+                break;
+            case 14:
+                SummonRowOfEnemies(15,-11.25f,2.0f);
+                SummonRowOfEnemies(15,-11.25f,3.5f);
+                SummonRowOfEnemies(15,-11.25f,5.0f);
+                SummonRowOfEnemies(15,-11.25f,6.5f);
+                enemiesRemaining=60;
                 break;
 
 
