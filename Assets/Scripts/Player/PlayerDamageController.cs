@@ -9,24 +9,26 @@ public class PlayerDamageController : MonoBehaviour
     public int maxHealth = 5;
     public int currentHealth;
     public UnityEvent OnDead;
+    bool sheild=false;
+    public GameObject shieldObject;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = 3;
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            ChangeHealth(-1);
-        }
-    }
 
     public void ChangeHealth(int amount)
     {
         if(currentHealth<=0)
             return;
+
+        if(amount<0 && sheild==true)
+        {
+            amount++;
+            sheild=false;
+            shieldObject.SetActive(false);
+        }
 
         currentHealth +=amount;
         if(currentHealth>maxHealth) currentHealth=maxHealth;
@@ -37,5 +39,11 @@ public class PlayerDamageController : MonoBehaviour
             OnDead?.Invoke();
         }
 
+    }
+
+    public void shieldOn()
+    {
+        shieldObject.SetActive(true);
+        sheild=true;
     }
 }

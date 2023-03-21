@@ -5,14 +5,14 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     
-    public enum itemType {heal, rapidFire, doubleTap};   
+    public enum itemType {heal, rapidFire, doubleTap, shield};   
     private GameObject player;
     public itemType typeOfItem;
     
     void Start() 
     {
         player=GameObject.Find("Player");    
-        switch(Random.Range(1,4))
+        switch(Random.Range(1,5))
         {
             case 1:
                 typeOfItem=itemType.heal;
@@ -22,6 +22,9 @@ public class PowerUp : MonoBehaviour
                 break;
             case 3:
                 typeOfItem=itemType.doubleTap;
+                break;
+            case 4:
+                typeOfItem=itemType.shield;
                 break;
         }
         
@@ -47,6 +50,10 @@ public class PowerUp : MonoBehaviour
         else if(typeOfItem==itemType.doubleTap)
         {
             player.GetComponent<PlayerAttackController>().doubleTap=true;
+        }
+        else if(typeOfItem==itemType.shield)
+        {
+            player.GetComponent<PlayerDamageController>().shieldOn();
         }
     }
 

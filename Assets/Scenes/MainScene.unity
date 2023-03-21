@@ -356,6 +356,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &611726509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5335787886648699355, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
+  m_PrefabInstance: {fileID: 2448040254339908492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &623040582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448040253975887234, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.47
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 2448040253975887234, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1679,6 +1684,10 @@ PrefabInstance:
       propertyPath: hearts.Array.data[4]
       value: 
       objectReference: {fileID: 1663582396}
+    - target: {fileID: 6634742488599243763, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
+      propertyPath: shieldObject
+      value: 
+      objectReference: {fileID: 611726509}
     - target: {fileID: 6634742488599243763, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
       propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 

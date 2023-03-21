@@ -36,41 +36,38 @@ public class LevelController : MonoBehaviour
         {
             case 1:
                 SummonRowOfEnemies(15,-11.25f,5f);
-                enemiesRemaining=15;
                 break;
             case 2:
                 SummonRowOfEnemies(11,-8.25f,5f);
-                SummonRowOfEnemies(15,-11.25f,6.5f);
-                enemiesRemaining=26;
+                SummonRowOfEnemies(15,-11.25f,6.5f);              
                 break;
             case 3:
-                SummonBoss(new Vector2(0,5f), 10, 100, 1, 3);
-                enemiesRemaining=1;
+                SummonBoss(new Vector2(0,5f), 10, 100, 1, 3);              
                 break;
             case 4:
                 SummonRowOfEnemies(7,-5.25f,3.5f);
                 SummonRowOfEnemies(11,-8.25f,5f);
                 SummonRowOfEnemies(15,-11.25f,6.5f);
-                enemiesRemaining=33;
+             
                 break;
             case 5:
                 SummonRowOfEnemies(5,-11.25f,5f);
                 SummonRowOfEnemies(5,3.75f,5f);
                 SummonBoss(new Vector2(0,5f), 10, 100, 1, 3);
-                enemiesRemaining=11;
+               
                 break;
             case 6:
                 SummonRowOfEnemies(15,-11.25f,3.5f);
                 SummonRowOfEnemies(15,-11.25f,5.0f);
                 SummonRowOfEnemies(15,-11.25f,6.5f);
-                enemiesRemaining=45;
+               
                 break;
             case 7:
                 SummonRowOfEnemies(5,-11.25f,5f);
                 SummonRowOfEnemies(5,3.75f,5f);
                 SummonRowOfEnemies(15,-11.25f,3f);
                 SummonBoss(new Vector2(0,5f), 10, 100, 1, 3);
-                enemiesRemaining=26;
+          
                 break;
             case 8:
                 SummonRowOfEnemies(5,-11.25f,5f);
@@ -80,28 +77,28 @@ public class LevelController : MonoBehaviour
                 SummonRowOfEnemies(5,-11.25f,2.5f);
                 SummonRowOfEnemies(5,3.75f,2.5f);
                 SummonBoss(new Vector2(0,2.5f), 10, 100, 1, 3);
-                enemiesRemaining=22;
+           
                 break;
             case 9:
                 SummonRowOfEnemies(15,-11.25f,2.0f);
                 SummonRowOfEnemies(15,-11.25f,3.5f);
                 SummonRowOfEnemies(15,-11.25f,5.0f);
                 SummonRowOfEnemies(15,-11.25f,6.5f);
-                enemiesRemaining=60;
+             
                 break;
             case 10:
                 SummonBoss(new Vector2(-8.25f,2.5f), 5, 100, 1, 3);
                 SummonBoss(new Vector2(-4.25f,5f), 5, 100, 1, 3);
                 SummonBoss(new Vector2(8.25f,2.5f), 5, 100, 1, 3);
                 SummonBoss(new Vector2(4.25f,5f), 5, 100, 1, 3);
-                enemiesRemaining=4;
+               
                 break;
             case 11:
                 SummonBoss(new Vector2(-4.25f,2.5f), 7, 100, 1, 3);
                 SummonBoss(new Vector2(0f,5f), 7, 100, 1, 3);
                 SummonBoss(new Vector2(4.25f,2.5f), 7, 100, 1, 3);
                 SummonBoss(new Vector2(0f,0f), 7, 100, 1, 3);
-                enemiesRemaining=4;
+            
                 break;
             case 12:
                 SummonRowOfEnemies(5,-11.25f,5f);
@@ -109,14 +106,13 @@ public class LevelController : MonoBehaviour
                 SummonRowOfEnemies(15,-11.25f,3f);
                 SummonRowOfEnemies(15,-11.25f,1f);
                 SummonBoss(new Vector2(0,5f), 15, 100, 1, 3);
-                enemiesRemaining=41;
+              
                 break;
             case 14:
                 SummonRowOfEnemies(15,-11.25f,2.0f);
                 SummonRowOfEnemies(15,-11.25f,3.5f);
                 SummonRowOfEnemies(15,-11.25f,5.0f);
                 SummonRowOfEnemies(15,-11.25f,6.5f);
-                enemiesRemaining=60;
                 break;
 
 
@@ -131,6 +127,7 @@ public class LevelController : MonoBehaviour
         for(int i=0;i<=numEnemies;i++)
         {
             Instantiate(enemyPrefab1, new Vector2(x,y), transform.rotation);
+            enemiesRemaining++;
             x+=1.5f;
         }
     }
@@ -142,6 +139,7 @@ public class LevelController : MonoBehaviour
         boss.GetComponent<EnemyDamageController>().score = scr;
         boss.GetComponent<EnemyShooting>().attackCoolDownMin = atkMin;
         boss.GetComponent<EnemyShooting>().attackCoolDownMax = atkMax;
+        enemiesRemaining++;
     }
 
     public void UpdateKillCount()

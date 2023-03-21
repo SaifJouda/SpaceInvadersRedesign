@@ -22,6 +22,9 @@ public class PlayerAttackController : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.I)) rapidFire=!rapidFire;
+        if(Input.GetKeyDown(KeyCode.O)) doubleTap=!doubleTap;
+        if(Input.GetKeyDown(KeyCode.P)) autoFire=!autoFire;
         if(autoFire==false)
         {
             if(Input.GetKeyDown(KeyCode.Space) && isAttackCooldown==false) Attack();
