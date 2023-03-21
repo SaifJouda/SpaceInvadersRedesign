@@ -1588,6 +1588,7 @@ MonoBehaviour:
   objectText: {fileID: 1051946282}
   enemyPrefab1: {fileID: 8245651219214726515, guid: 8f626332cb6532c4bbfd42e4e385c9eb, type: 3}
   bossPrefab: {fileID: 2133523628198022521, guid: 785f8ed2e3b0db44a90b20c0e99945a2, type: 3}
+  shieldPrefab: {fileID: 5959107180688418178, guid: 19dc8f44f9551da4bb0f7fab67be6afe, type: 3}
 --- !u!4 &2048350538
 Transform:
   m_ObjectHideFlags: 0
@@ -1610,34 +1611,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2429236816708423843, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
-      propertyPath: autoFire
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2429236816708423843, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
-      propertyPath: doubleTap
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2448040253975887232, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
-      propertyPath: m_Mass
-      value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 2448040253975887232, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2448040253975887232, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2448040253975887232, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2448040253975887232, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2448040253975887234, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1706,10 +1679,6 @@ PrefabInstance:
       propertyPath: hearts.Array.data[4]
       value: 
       objectReference: {fileID: 1663582396}
-    - target: {fileID: 6634742488599243763, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
-      propertyPath: maxHealth
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6634742488599243763, guid: aa67bb60dae072c469b7fda637ef15a0, type: 3}
       propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 

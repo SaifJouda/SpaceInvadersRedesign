@@ -8,9 +8,13 @@ public class LevelController : MonoBehaviour
     public TMP_Text objectText;
     public GameObject enemyPrefab1;
     public GameObject bossPrefab;
+    public GameObject shieldPrefab;
     int level=12;
     int enemiesRemaining;
     GameObject player;
+    
+    GameObject[] shields= new GameObject[5];
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,16 +23,15 @@ public class LevelController : MonoBehaviour
         player=GameObject.Find("Player");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 
     public void InitiateLevel()
     {
         float x;
         float y;
+        
+        activateShields();
+
         switch(level)
         {
             case 1:
@@ -161,7 +164,20 @@ public class LevelController : MonoBehaviour
         {
             level++;
             objectText.text="Level: " + level.ToString();
-            player.GetComponent<PlayerDamageController>().ChangeHealth(2);
+            player.GetComponent<PlayerDamageController>().ChangeHealth(1);
+        }
+    }
+
+    void activateShields()
+    {
+        for(int i=0;i<5;i++)
+        {
+            if(shields[i]==null)
+            {
+                shields[i]=Instantiate(shieldPrefab, new Vector2(-15f+i*7.5f,-5.5f), transform.rotation);
+                shields[i].GetComponent<Shield>().health=1;
+            }
+
         }
     }
 }

@@ -13,6 +13,10 @@ public class EnemyBullet : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerDamageController>().ChangeHealth(damage);
         }
+        else if(other.gameObject.GetComponent<Shield>()!=null)
+        {
+            other.gameObject.GetComponent<Shield>().damageShield(1);
+        }
 
     }
 }

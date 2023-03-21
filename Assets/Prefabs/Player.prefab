@@ -99,19 +99,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2448040253975887238}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &2448040253975887239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileGameObject: {fileID: 2753878665979509952, guid: dae6d61b1531f1946b7a4575eca28cc1, type: 3}
+  rapidFire: 0
+  doubleTap: 0
+  autoFire: 0
 --- !u!114 &6634742488599243763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8adc32387061c4b975d3073bffa4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 5
   currentHealth: 0
   OnDead:
     m_PersistentCalls:

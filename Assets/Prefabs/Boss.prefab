@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   mainController: {fileID: 0}
+  powerUpPrefab: {fileID: 4026761363355137571, guid: 24e76bb27c109cf4e986af342231d350, type: 3}
   maxHealth: 5
   currentHealth: 0
   score: 10

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyDamageController : MonoBehaviour
 {
+    
     public GameObject player;
     public GameObject mainController;
+    public GameObject powerUpPrefab;
     //General Stats
     public int maxHealth = 1;
     public int currentHealth;
@@ -38,6 +40,14 @@ public class EnemyDamageController : MonoBehaviour
     {
         mainController.GetComponent<LevelController>().UpdateKillCount();
         player.GetComponent<ScoreController>().score += score;
+        if(Random.Range(0, 5)==1)
+        {
+            GameObject powerUp = Instantiate(powerUpPrefab, transform.position, transform.rotation);
+            powerUp.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -10);
+            //itemType[] values = (itemType[])Enum.GetValues(typeof(powerUp.GetComponent<PowerUp>().itemType)) //(itemType[])Enum.GetValues(typeof(itemType));
+            //itemType randomItemType = values[rand.Next(values.Length)];
+            //powerUp.GetComponent<PowerUp>().typeOfItem=Enum.GetValues(typeof(powerUp.GetComponent<PowerUp>().itemType));//[Random.Range(0, 2)];
+        }
         Destroy(gameObject);
     }
 }

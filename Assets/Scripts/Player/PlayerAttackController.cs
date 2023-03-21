@@ -31,7 +31,7 @@ public class PlayerAttackController : MonoBehaviour
             if(Input.GetKey(KeyCode.Space) && isAttackCooldown==false) Attack();
         }
 
-        if(Input.GetKeyDown(KeyCode.L)) updateFireSpeed();
+        //if(Input.GetKeyDown(KeyCode.L)) updateFireSpeed();
     }
     
 
@@ -48,7 +48,7 @@ public class PlayerAttackController : MonoBehaviour
 
     void Attack()
     {
-        if(doubleTap=false)
+        if(doubleTap==false)
         {
             GameObject projectileObject = Instantiate(projectileGameObject, transform.position, transform.rotation);
             projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 20);
@@ -62,7 +62,8 @@ public class PlayerAttackController : MonoBehaviour
         }
         
         isAttackCooldown=true;
-        attackCooldownTimer=attackCooldown;
+        if(rapidFire==true) attackCooldownTimer=0.25f;
+        else attackCooldownTimer=0.5f;
     }
 
     public void updateFireSpeed()
