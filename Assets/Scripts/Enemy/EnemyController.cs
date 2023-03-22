@@ -6,9 +6,9 @@ public class EnemyController : MonoBehaviour
 {
     float speedX = 1.0f;
     public float speedY=1.0f;
-    int steps = 16;
+    int steps = 8;
     Rigidbody2D rigidbody2d;
-    int stepCounter=8;
+    int stepCounter=4;
     int horizontal=1;
 
     private float moveCooldown = 0.5f;

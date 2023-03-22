@@ -18,7 +18,7 @@ public class EnemyDamageController : MonoBehaviour
         currentHealth = maxHealth;
         //////////////
         // V V Monitor if experience lag when loading levels with large amounts of enemies
-        player=GameObject.Find("Player");
+        //player=GameObject.Find("Player");
         mainController=GameObject.Find("Main Controller");
     }
 
@@ -39,7 +39,8 @@ public class EnemyDamageController : MonoBehaviour
     void Die()
     {
         mainController.GetComponent<LevelController>().UpdateKillCount();
-        player.GetComponent<ScoreController>().score += score;
+        mainController.GetComponent<ScoreController>().score += score;
+        mainController.GetComponent<ScoreController>().kills++;
         if(Random.Range(0, 5)==1)
         {
             GameObject powerUp = Instantiate(powerUpPrefab, transform.position, transform.rotation);
