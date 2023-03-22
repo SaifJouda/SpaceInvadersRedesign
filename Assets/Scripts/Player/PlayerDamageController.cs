@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class PlayerDamageController : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class PlayerDamageController : MonoBehaviour
     public UnityEvent OnDead;
     bool sheild=false;
     public GameObject shieldObject;
+    public TMP_Text livesText;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = 3;
+        livesText.text=currentHealth.ToString();
     }
 
 
@@ -38,6 +41,7 @@ public class PlayerDamageController : MonoBehaviour
             //Die();
             OnDead?.Invoke();
         }
+        livesText.text=currentHealth.ToString();
 
     }
 

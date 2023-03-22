@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        objectText.text="Level: " + level.ToString();
+        objectText.text="Level\n" + level.ToString();
         InitiateLevel();
         player=GameObject.Find("Player");
     }
@@ -101,11 +101,12 @@ public class LevelController : MonoBehaviour
             
                 break;
             case 12:
-                SummonRowOfEnemies(5,-11.25f,5f);
-                SummonRowOfEnemies(5,3.75f,5f);
-                SummonRowOfEnemies(15,-11.25f,3f);
-                SummonRowOfEnemies(15,-11.25f,1f);
-                SummonBoss(new Vector2(0,5f), 15, 100, 1, 3);
+                SummonRowOfEnemies(13,-7.5f,7.5f);
+                //SummonRowOfEnemies(5,-11.25f,5f);
+                //SummonRowOfEnemies(5,3.75f,5f);
+                //SummonRowOfEnemies(15,-11.25f,3f);
+                //SummonRowOfEnemies(15,-11.25f,1f);
+                //SummonBoss(new Vector2(0,5f), 15, 100, 1, 3);
               
                 break;
             case 14:
@@ -124,11 +125,11 @@ public class LevelController : MonoBehaviour
     {
         float x=xPos;
         float y=yPos;
-        for(int i=0;i<=numEnemies;i++)
+        for(int i=0;i<numEnemies;i++)
         {
             Instantiate(enemyPrefab1, new Vector2(x,y), transform.rotation);
             enemiesRemaining++;
-            x+=1.5f;
+            x+=1.25f;
         }
     }
 
