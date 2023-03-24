@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerAttackController : MonoBehaviour
 {
@@ -14,24 +15,37 @@ public class PlayerAttackController : MonoBehaviour
     public bool doubleTap=false;
     public bool autoFire=false;
 
-    // Start is called before the first frame update
-    void Start()
+    private KeyCode shootKeyCode;
+
+    void Awake()
     {
-        
+        if (!PlayerPrefs.HasKey("AutoShoot"))
+        {
+            PlayerPrefs.SetInt("AutoShoot", 0);
+            PlayerPrefs.Save();
+        }
+        if (!PlayerPrefs.HasKey("ShootKey"))
+        {
+            PlayerPrefs.SetString("ShootKey", KeyCode.Space.ToString());
+            PlayerPrefs.Save();
+        }
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I)) rapidFire=!rapidFire;
-        if(Input.GetKeyDown(KeyCode.O)) doubleTap=!doubleTap;
-        if(Input.GetKeyDown(KeyCode.P)) autoFire=!autoFire;
-        if(autoFire==false)
+        //if(Input.GetKeyDown(KeyCode.I)) rapidFire=!rapidFire;
+        //if(Input.GetKeyDown(KeyCode.O)) doubleTap=!doubleTap;
+        //if(Input.GetKeyDown(KeyCode.P)) autoFire=!autoFire;
+
+        autoFire = PlayerPrefs.GetInt("AutoShoot") == 1;
+        shootKeyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("ShootKey"));
+        if (autoFire==false)
         {
-            if(Input.GetKeyDown(KeyCode.Space) && isAttackCooldown==false) Attack();
+            if(Input.GetKeyDown(shootKeyCode) && isAttackCooldown==false) Attack();
         }
         else
         {
-            if(Input.GetKey(KeyCode.Space) && isAttackCooldown==false) Attack();
+            if(Input.GetKey(shootKeyCode) && isAttackCooldown==false) Attack();
         }
 
         //if(Input.GetKeyDown(KeyCode.L)) updateFireSpeed();
