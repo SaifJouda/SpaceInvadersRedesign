@@ -20,6 +20,11 @@ public class PlayerDamageController : MonoBehaviour
         livesText.text=currentHealth.ToString();
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Z)) ChangeHealth(1);
+
+    }
 
     public void ChangeHealth(int amount)
     {

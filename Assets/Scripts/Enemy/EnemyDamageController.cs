@@ -45,9 +45,6 @@ public class EnemyDamageController : MonoBehaviour
         {
             GameObject powerUp = Instantiate(powerUpPrefab, transform.position, transform.rotation);
             powerUp.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -10);
-            //itemType[] values = (itemType[])Enum.GetValues(typeof(powerUp.GetComponent<PowerUp>().itemType)) //(itemType[])Enum.GetValues(typeof(itemType));
-            //itemType randomItemType = values[rand.Next(values.Length)];
-            //powerUp.GetComponent<PowerUp>().typeOfItem=Enum.GetValues(typeof(powerUp.GetComponent<PowerUp>().itemType));//[Random.Range(0, 2)];
         }
         Destroy(gameObject);
     }
