@@ -32,7 +32,6 @@ public class ShipTypeController : MonoBehaviour
         {
             case shipType.basic:
                 pathName= "DefaultShips.png";
-                Debug.Log("basic");
                 break;
             case shipType.green:
                 pathName= "GreenDefaultShip.png";
@@ -66,8 +65,6 @@ public class ShipTypeController : MonoBehaviour
         texture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/ArtAsset/Players/"+pathName, typeof(Texture2D));
         if(texture!=null)
         {
-            Debug.Log(texture);
-            Debug.Log("texture");
             spriteRenderer.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f),450); 
         }
     }
