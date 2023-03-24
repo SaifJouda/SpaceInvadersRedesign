@@ -14,12 +14,15 @@ public class EnemyController : MonoBehaviour
     private float moveCooldown = 0.5f;
     float moveCooldownTimer;
     GameObject player;
+    public GameObject MainController;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         moveCooldownTimer=moveCooldown;
         player=GameObject.Find("Player");
+        MainController=GameObject.Find("Main Controller");
+        moveCooldown=1f/MainController.GetComponent<DifficultyController>().enemyMoveSpeed;
     }
 
     // Update is called once per frame

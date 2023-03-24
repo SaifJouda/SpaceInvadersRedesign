@@ -7,11 +7,15 @@ public class LevelController : MonoBehaviour
 {
     public TMP_Text objectText;
     public GameObject enemyPrefab1;
+    public GameObject enemyPrefab2;
+    public GameObject enemyPrefab3;
+    public GameObject enemyPrefab4;
     public GameObject bossPrefab;
     public GameObject shieldPrefab;
     int level=12;
     int enemiesRemaining;
     GameObject player;
+    
     
     GameObject[] shields= new GameObject[5];
     
@@ -35,85 +39,107 @@ public class LevelController : MonoBehaviour
         switch(level)
         {
             case 1:
-                SummonRowOfEnemies(15,-11.25f,5f);
+                GetComponent<DifficultyController>().enemyMoveSpeed=1;
+                SummonRowOfEnemies(11,-6.25f,7.5f);
+                SummonRowOfEnemies(11,-6.25f,6.5f);
+                SummonRowOfEnemies(11,-6.25f,5.5f);
+                SummonRowOfEnemies(11,-6.25f,4.5f);
                 break;
             case 2:
-                SummonRowOfEnemies(11,-8.25f,5f);
-                SummonRowOfEnemies(15,-11.25f,6.5f);              
+                GetComponent<DifficultyController>().enemyMoveSpeed=2;
+                SummonRowOfEnemies(11,-6.25f,7.5f);
+                SummonRowOfEnemies(11,-6.25f,6.5f);
+                SummonRowOfEnemies(11,-6.25f,5.5f);
+                SummonRowOfEnemies(11,-6.25f,4.5f);           
                 break;
             case 3:
-                SummonBoss(new Vector2(0,5f), 10, 100, 1, 3);              
+                SummonBoss(new Vector2(0,7f), 10, 100, 1, 3);              
                 break;
             case 4:
-                SummonRowOfEnemies(7,-5.25f,3.5f);
-                SummonRowOfEnemies(11,-8.25f,5f);
-                SummonRowOfEnemies(15,-11.25f,6.5f);
+                GetComponent<DifficultyController>().enemyMoveSpeed=5;
+                SummonRowOfEnemies(11,-6.25f,7.5f);
+                SummonRowOfEnemies(11,-6.25f,6.5f);
              
                 break;
             case 5:
-                SummonRowOfEnemies(5,-11.25f,5f);
-                SummonRowOfEnemies(5,3.75f,5f);
-                SummonBoss(new Vector2(0,5f), 10, 100, 1, 3);
+                GetComponent<DifficultyController>().enemyMoveSpeed=2;
+                SummonRowOfEnemies(4,-6.25f,7.5f);
+                SummonRowOfEnemies(4,2.5f,7.5f);
+                SummonRowOfEnemies(4,-6.25f,6.5f);
+                SummonRowOfEnemies(4,2.5f,6.5f);
+                SummonBoss(new Vector2(0.0f,7f), 10, 100, 1, 3);
                
                 break;
             case 6:
-                SummonRowOfEnemies(15,-11.25f,3.5f);
-                SummonRowOfEnemies(15,-11.25f,5.0f);
-                SummonRowOfEnemies(15,-11.25f,6.5f);
+                GetComponent<DifficultyController>().enemyMoveSpeed=3;
+                SummonRowOfEnemies(11,-6.25f,7.5f);
+                SummonRowOfEnemies(11,-6.25f,6.5f);
+                SummonRowOfEnemies(11,-6.25f,5.5f);
+                SummonRowOfEnemies(11,-6.25f,4.5f);  
                
                 break;
             case 7:
-                SummonRowOfEnemies(5,-11.25f,5f);
-                SummonRowOfEnemies(5,3.75f,5f);
-                SummonRowOfEnemies(15,-11.25f,3f);
-                SummonBoss(new Vector2(0,5f), 10, 100, 1, 3);
+                GetComponent<DifficultyController>().enemyMoveSpeed=4;
+                SummonRowOfEnemies(11,-6.25f,7.5f);
+                SummonRowOfEnemies(11,-6.25f,6.5f);
+                SummonRowOfEnemies(11,-6.25f,5.5f);
+                SummonRowOfEnemies(11,-6.25f,4.5f);  
           
                 break;
             case 8:
-                SummonRowOfEnemies(5,-11.25f,5f);
-                SummonRowOfEnemies(5,3.75f,5f);
-                SummonBoss(new Vector2(0,5f), 10, 100, 1, 3);
+            GetComponent<DifficultyController>().enemyMoveSpeed=3;
+                SummonRowOfEnemies(2,-6.25f,7.5f);
+                SummonRowOfEnemies(2,-6.25f,6.5f);
+                SummonBoss(new Vector2(-2.5f,7f), 10, 100, 1, 3);
+                SummonRowOfEnemies(1,0f,7.5f);
+                SummonRowOfEnemies(1,0f,6.5f);
+                SummonBoss(new Vector2(2.5f,7f), 10, 100, 1, 3);
+                SummonRowOfEnemies(2,5f,7.5f);
+                SummonRowOfEnemies(2,5f,6.5f);
 
-                SummonRowOfEnemies(5,-11.25f,2.5f);
-                SummonRowOfEnemies(5,3.75f,2.5f);
-                SummonBoss(new Vector2(0,2.5f), 10, 100, 1, 3);
            
                 break;
             case 9:
-                SummonRowOfEnemies(15,-11.25f,2.0f);
-                SummonRowOfEnemies(15,-11.25f,3.5f);
-                SummonRowOfEnemies(15,-11.25f,5.0f);
-                SummonRowOfEnemies(15,-11.25f,6.5f);
+                GetComponent<DifficultyController>().enemyMoveSpeed=4;
+                SummonRowOfEnemies(11,-6.25f,7.5f);
+                SummonRowOfEnemies(11,-6.25f,6.5f);
+                SummonRowOfEnemies(11,-6.25f,5.5f);
+                SummonRowOfEnemies(11,-6.25f,4.5f);  
              
                 break;
             case 10:
-                SummonBoss(new Vector2(-8.25f,2.5f), 5, 100, 1, 3);
+                GetComponent<DifficultyController>().enemyMoveSpeed=2;
+                SummonBoss(new Vector2(-6.25f,7.5f), 5, 100, 1, 3);
                 SummonBoss(new Vector2(-4.25f,5f), 5, 100, 1, 3);
-                SummonBoss(new Vector2(8.25f,2.5f), 5, 100, 1, 3);
+                SummonBoss(new Vector2(6.25f,7.5f), 5, 100, 1, 3);
                 SummonBoss(new Vector2(4.25f,5f), 5, 100, 1, 3);
                
                 break;
             case 11:
-                SummonBoss(new Vector2(-4.25f,2.5f), 7, 100, 1, 3);
-                SummonBoss(new Vector2(0f,5f), 7, 100, 1, 3);
-                SummonBoss(new Vector2(4.25f,2.5f), 7, 100, 1, 3);
-                SummonBoss(new Vector2(0f,0f), 7, 100, 1, 3);
+                GetComponent<DifficultyController>().enemyMoveSpeed=2;
+                SummonBoss(new Vector2(-5.25f,6f), 5, 100, 1, 3);
+                SummonBoss(new Vector2(0,7.5f), 5, 100, 1, 3);
+                SummonBoss(new Vector2(5.25f,6f), 5, 100, 1, 3);
+                SummonBoss(new Vector2(0,4.5f), 5, 100, 1, 3);
             
                 break;
             case 12:
-                SummonRowOfEnemies(13,-7.5f,7.5f);
-                //SummonRowOfEnemies(5,-11.25f,5f);
-                //SummonRowOfEnemies(5,3.75f,5f);
-                //SummonRowOfEnemies(15,-11.25f,3f);
-                //SummonRowOfEnemies(15,-11.25f,1f);
-                //SummonBoss(new Vector2(0,5f), 15, 100, 1, 3);
-              
+                GetComponent<DifficultyController>().enemyMoveSpeed=4;
+                SummonRowOfEnemies(4,-6.25f,7.5f);
+                SummonRowOfEnemies(4,2.5f,7.5f);
+                SummonRowOfEnemies(4,-6.25f,6.5f);
+                SummonRowOfEnemies(4,2.5f,6.5f);
+                SummonBoss(new Vector2(0.0f,7f), 10, 100, 1, 3);
+                SummonRowOfEnemies(11,-6.25f,5.5f);
+                SummonRowOfEnemies(11,-6.25f,4.5f);  
                 break;
             case 14:
-                SummonRowOfEnemies(15,-11.25f,2.0f);
-                SummonRowOfEnemies(15,-11.25f,3.5f);
-                SummonRowOfEnemies(15,-11.25f,5.0f);
-                SummonRowOfEnemies(15,-11.25f,6.5f);
+                GetComponent<DifficultyController>().enemyMoveSpeed=5;
+                SummonRowOfEnemies(4,-6.25f,7.5f);
+                SummonRowOfEnemies(4,2.5f,7.5f);
+                SummonRowOfEnemies(4,-6.25f,6.5f);
+                SummonRowOfEnemies(4,2.5f,6.5f);
+                SummonBoss(new Vector2(0.0f,7f), 10, 100, 1, 3);
                 break;
 
 
@@ -125,9 +151,31 @@ public class LevelController : MonoBehaviour
     {
         float x=xPos;
         float y=yPos;
+        int num = Random.Range(1,5);
+        GameObject enemy;
         for(int i=0;i<numEnemies;i++)
         {
-            Instantiate(enemyPrefab1, new Vector2(x,y), transform.rotation);
+            switch(num)
+            {
+                case 1:
+                    Instantiate(enemyPrefab1, new Vector2(x,y), transform.rotation);
+                    break;
+                case 2:
+                    Instantiate(enemyPrefab2, new Vector2(x,y), transform.rotation);
+                    break;
+                case 3:
+                    Instantiate(enemyPrefab3, new Vector2(x,y), transform.rotation);
+                    break;
+                case 4:
+                    Instantiate(enemyPrefab4, new Vector2(x,y), transform.rotation);
+                    break;
+            }
+            
+            //enemy = Instantiate(enemyPrefab1, new Vector2(x,y), transform.rotation);//.GetComponent<EnemyTypeController>();
+            
+            //enemy.GetComponent<EnemyTypeController>().typeOfEnemy = enemy.GetComponent<EnemyTypeController>().
+            //enemy.GetComponent<EnemyTypeController>().setRandomType(num);
+            //enemy.GetComponent<EnemyTypeController>().changeEnemy();
             enemiesRemaining++;
             x+=1.25f;
         }
