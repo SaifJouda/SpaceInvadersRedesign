@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
@@ -27,6 +28,13 @@ public class LevelController : MonoBehaviour
         player=GameObject.Find("Player");
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
     
 
     public void InitiateLevel()
@@ -39,14 +47,14 @@ public class LevelController : MonoBehaviour
         switch(level)
         {
             case 1:
-                GetComponent<DifficultyController>().enemyMoveSpeed=1;
+                GetComponent<DifficultyController>().changeMoveSpeed(1);
                 SummonRowOfEnemies(11,-6.25f,7.5f);
                 SummonRowOfEnemies(11,-6.25f,6.5f);
                 SummonRowOfEnemies(11,-6.25f,5.5f);
                 SummonRowOfEnemies(11,-6.25f,4.5f);
                 break;
             case 2:
-                GetComponent<DifficultyController>().enemyMoveSpeed=2;
+                GetComponent<DifficultyController>().changeMoveSpeed(2);
                 SummonRowOfEnemies(11,-6.25f,7.5f);
                 SummonRowOfEnemies(11,-6.25f,6.5f);
                 SummonRowOfEnemies(11,-6.25f,5.5f);
@@ -56,13 +64,13 @@ public class LevelController : MonoBehaviour
                 SummonBoss(new Vector2(0,7f), 10, 100, 1, 3);              
                 break;
             case 4:
-                GetComponent<DifficultyController>().enemyMoveSpeed=5;
+                GetComponent<DifficultyController>().changeMoveSpeed(5);
                 SummonRowOfEnemies(11,-6.25f,7.5f);
                 SummonRowOfEnemies(11,-6.25f,6.5f);
              
                 break;
             case 5:
-                GetComponent<DifficultyController>().enemyMoveSpeed=2;
+                GetComponent<DifficultyController>().changeMoveSpeed(2);
                 SummonRowOfEnemies(4,-6.25f,7.5f);
                 SummonRowOfEnemies(4,2.5f,7.5f);
                 SummonRowOfEnemies(4,-6.25f,6.5f);
@@ -71,7 +79,7 @@ public class LevelController : MonoBehaviour
                
                 break;
             case 6:
-                GetComponent<DifficultyController>().enemyMoveSpeed=3;
+                GetComponent<DifficultyController>().changeMoveSpeed(3);
                 SummonRowOfEnemies(11,-6.25f,7.5f);
                 SummonRowOfEnemies(11,-6.25f,6.5f);
                 SummonRowOfEnemies(11,-6.25f,5.5f);
@@ -79,7 +87,7 @@ public class LevelController : MonoBehaviour
                
                 break;
             case 7:
-                GetComponent<DifficultyController>().enemyMoveSpeed=4;
+                GetComponent<DifficultyController>().changeMoveSpeed(4);
                 SummonRowOfEnemies(11,-6.25f,7.5f);
                 SummonRowOfEnemies(11,-6.25f,6.5f);
                 SummonRowOfEnemies(11,-6.25f,5.5f);
@@ -87,7 +95,7 @@ public class LevelController : MonoBehaviour
           
                 break;
             case 8:
-            GetComponent<DifficultyController>().enemyMoveSpeed=3;
+            GetComponent<DifficultyController>().changeMoveSpeed(3);
                 SummonRowOfEnemies(2,-6.25f,7.5f);
                 SummonRowOfEnemies(2,-6.25f,6.5f);
                 SummonBoss(new Vector2(-2.5f,7f), 10, 100, 1, 3);
@@ -100,7 +108,7 @@ public class LevelController : MonoBehaviour
            
                 break;
             case 9:
-                GetComponent<DifficultyController>().enemyMoveSpeed=4;
+                GetComponent<DifficultyController>().changeMoveSpeed(4);
                 SummonRowOfEnemies(11,-6.25f,7.5f);
                 SummonRowOfEnemies(11,-6.25f,6.5f);
                 SummonRowOfEnemies(11,-6.25f,5.5f);
@@ -108,7 +116,7 @@ public class LevelController : MonoBehaviour
              
                 break;
             case 10:
-                GetComponent<DifficultyController>().enemyMoveSpeed=2;
+                GetComponent<DifficultyController>().changeMoveSpeed(2);
                 SummonBoss(new Vector2(-6.25f,7.5f), 5, 100, 1, 3);
                 SummonBoss(new Vector2(-4.25f,5f), 5, 100, 1, 3);
                 SummonBoss(new Vector2(6.25f,7.5f), 5, 100, 1, 3);
@@ -116,7 +124,7 @@ public class LevelController : MonoBehaviour
                
                 break;
             case 11:
-                GetComponent<DifficultyController>().enemyMoveSpeed=2;
+                GetComponent<DifficultyController>().changeMoveSpeed(2);
                 SummonBoss(new Vector2(-5.25f,6f), 5, 100, 1, 3);
                 SummonBoss(new Vector2(0,7.5f), 5, 100, 1, 3);
                 SummonBoss(new Vector2(5.25f,6f), 5, 100, 1, 3);
@@ -124,7 +132,7 @@ public class LevelController : MonoBehaviour
             
                 break;
             case 12:
-                GetComponent<DifficultyController>().enemyMoveSpeed=4;
+                GetComponent<DifficultyController>().changeMoveSpeed(4);
                 SummonRowOfEnemies(4,-6.25f,7.5f);
                 SummonRowOfEnemies(4,2.5f,7.5f);
                 SummonRowOfEnemies(4,-6.25f,6.5f);
@@ -134,7 +142,7 @@ public class LevelController : MonoBehaviour
                 SummonRowOfEnemies(11,-6.25f,4.5f);  
                 break;
             case 14:
-                GetComponent<DifficultyController>().enemyMoveSpeed=5;
+                GetComponent<DifficultyController>().changeMoveSpeed(5);
                 SummonRowOfEnemies(4,-6.25f,7.5f);
                 SummonRowOfEnemies(4,2.5f,7.5f);
                 SummonRowOfEnemies(4,-6.25f,6.5f);
@@ -221,7 +229,7 @@ public class LevelController : MonoBehaviour
         {
             if(shields[i]==null)
             {
-                shields[i]=Instantiate(shieldPrefab, new Vector2(-15f+i*7.5f,-5.5f), transform.rotation);
+                shields[i]=Instantiate(shieldPrefab, new Vector2(-10f+i*5.0f,-5f), transform.rotation);
                 shields[i].GetComponent<Shield>().health=1;
             }
 
