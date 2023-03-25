@@ -235,7 +235,7 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    void activateShields()
+    public void activateShields()
     {
         for(int i=0;i<5;i++)
         {
