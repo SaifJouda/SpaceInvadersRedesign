@@ -5,8 +5,9 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     
-    public enum itemType {heal, rapidFire, doubleTap, shield};   
+    public enum itemType {heal, rapidFire, doubleTap, shield, shieldBlocks};   
     private GameObject player;
+    private GameObject mainController;
     public itemType typeOfItem;
     public GameObject doubleSprite;
     public GameObject healthSprite;
@@ -16,8 +17,9 @@ public class PowerUp : MonoBehaviour
     void Start() 
     {
         player=GameObject.Find("Player");    
-        
-        switch(Random.Range(1,5))
+        mainController=GameObject.Find("Main Controller");
+
+        switch(Random.Range(1,6))
         {
             case 1:
                 typeOfItem=itemType.heal;
@@ -35,6 +37,11 @@ public class PowerUp : MonoBehaviour
                 typeOfItem=itemType.shield;
                 shieldSprite.SetActive(true);
                 break;
+            case 5:
+                typeOfItem=itemType.shieldBlocks;
+                rapidSprite.SetActive(true);
+                break;
+
         }
         
     }
@@ -64,6 +71,10 @@ public class PowerUp : MonoBehaviour
         else if(typeOfItem==itemType.shield)
         {
             player.GetComponent<PlayerDamageController>().shieldOn();
+        }
+        else if(typeOfItem==itemType.shieldBlocks)
+        {
+            mainController.GetComponent<LevelController>().activateShields();
         }
     }
 

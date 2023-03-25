@@ -13,11 +13,13 @@ public class PlayerDamageController : MonoBehaviour
     bool sheild=false;
     public GameObject shieldObject;
     public TMP_Text livesText;
+    private GameObject mainController;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = 3;
         livesText.text=currentHealth.ToString();
+        mainController=GameObject.Find("Main Controller");
     }
 
     void Update()
@@ -44,7 +46,9 @@ public class PlayerDamageController : MonoBehaviour
         if(currentHealth<=0)
         {
             //Die();
+            if(currentHealth<0) currentHealth=0;
             OnDead?.Invoke();
+            mainController.GetComponent<DifficultyController>().changeMoveSpeed(0.0001f);
         }
         livesText.text=currentHealth.ToString();
 
