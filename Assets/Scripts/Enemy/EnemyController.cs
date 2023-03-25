@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     float moveCooldownTimer;
     GameObject player;
     public GameObject MainController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,5 +51,7 @@ public class EnemyController : MonoBehaviour
         {
             player.GetComponent<PlayerDamageController>().ChangeHealth(-10);
         }
+        moveCooldown=1f/MainController.GetComponent<DifficultyController>().enemyMoveSpeed;
+        Debug.Log(moveCooldown);
     }
 }

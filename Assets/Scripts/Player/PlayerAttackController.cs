@@ -12,8 +12,11 @@ public class PlayerAttackController : MonoBehaviour
     bool isAttackCooldown;
     float attackCooldownTimer;
     public bool rapidFire=false;
-    public bool doubleTap=false;
+    //public bool doubleTap=false;
     public bool autoFire=false;
+
+    public float doubleTapTime=0;
+    //public SpriteRenderer doubleTapSprite;
 
     private KeyCode shootKeyCode;
 
@@ -48,7 +51,7 @@ public class PlayerAttackController : MonoBehaviour
             if(Input.GetKey(shootKeyCode) && isAttackCooldown==false) Attack();
         }
 
-        //if(Input.GetKeyDown(KeyCode.L)) updateFireSpeed();
+        if(Input.GetKeyDown(KeyCode.X)) doubleTapTime=5f;
     }
     
 
@@ -61,11 +64,16 @@ public class PlayerAttackController : MonoBehaviour
             if (attackCooldownTimer <= 0)
                 isAttackCooldown = false;
         }
+        if(doubleTapTime>0) 
+        {
+            doubleTapTime-=Time.deltaTime;
+        }
+        
     }
 
     void Attack()
     {
-        if(doubleTap==false)
+        if(doubleTapTime<=0f)
         {
             GameObject projectileObject = Instantiate(projectileGameObject, transform.position, transform.rotation);
             projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 20);
