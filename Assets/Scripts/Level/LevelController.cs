@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
+// avoid ambiguity for Random
+using Random = UnityEngine.Random;
 
 public class LevelController : MonoBehaviour
 {
@@ -13,7 +16,8 @@ public class LevelController : MonoBehaviour
     public GameObject enemyPrefab4;
     public GameObject bossPrefab;
     public GameObject shieldPrefab;
-    int level=12;
+    //int level=12;
+    private int level;
     int enemiesRemaining;
     GameObject player;
     
@@ -23,6 +27,14 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!PlayerPrefs.HasKey("SelectedLevel"))
+        {
+            PlayerPrefs.SetInt("SelectedLevel", 1);
+            PlayerPrefs.Save();
+        }
+
+        level = PlayerPrefs.GetInt("SelectedLevel");
+
         objectText.text="Level\n" + level.ToString();
         InitiateLevel();
         player=GameObject.Find("Player");
