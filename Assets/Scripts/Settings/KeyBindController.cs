@@ -15,6 +15,8 @@ public class KeyBindController : MonoBehaviour
     public GameObject mvRightButtonPlaceholder;
     public GameObject mvLeftButtonPlaceholder;
 
+    public GameObject inputBlocker;
+
     private bool changeShootKey;
     private bool changeMoveRightKey;
     private bool changeMoveLeftKey;
@@ -81,6 +83,7 @@ public class KeyBindController : MonoBehaviour
                         shootButton.text = PlayerPrefs.GetString("ShootKey");
                     }
                     shootButtonPlaceholder.SetActive(false);
+                    inputBlocker.SetActive(false);
                     changeShootKey = false;
                 }
             }
@@ -113,6 +116,7 @@ public class KeyBindController : MonoBehaviour
                         mvRightButton.text = PlayerPrefs.GetString("MoveRightKey");
                     }
                     mvRightButtonPlaceholder.SetActive(false);
+                    inputBlocker.SetActive(false);
                     changeMoveRightKey = false;
                 }
             }
@@ -145,6 +149,7 @@ public class KeyBindController : MonoBehaviour
                         mvLeftButton.text = PlayerPrefs.GetString("MoveLeftKey");
                     }
                     mvLeftButtonPlaceholder.SetActive(false);
+                    inputBlocker.SetActive(false);
                     changeMoveLeftKey = false;
                 }
             }
