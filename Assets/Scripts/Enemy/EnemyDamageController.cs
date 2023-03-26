@@ -39,7 +39,7 @@ public class EnemyDamageController : MonoBehaviour
     void Die()
     {
         mainController.GetComponent<LevelController>().UpdateKillCount();
-        mainController.GetComponent<ScoreController>().score += score;
+        mainController.GetComponent<ScoreController>().UpdateScore(score);
         mainController.GetComponent<ScoreController>().kills++;
         if(Random.Range(0, 5)==1)
         {

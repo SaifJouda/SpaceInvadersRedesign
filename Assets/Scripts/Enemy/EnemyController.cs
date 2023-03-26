@@ -53,6 +53,6 @@ public class EnemyController : MonoBehaviour
             MainController.GetComponent<DifficultyController>().changeMoveSpeed(0.0001f);
         }
         moveCooldown=1f/MainController.GetComponent<DifficultyController>().enemyMoveSpeed;
-        Debug.Log(moveCooldown);
+        //Debug.Log(moveCooldown);
     }
 }
