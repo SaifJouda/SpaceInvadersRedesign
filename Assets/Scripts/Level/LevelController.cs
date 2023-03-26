@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.Events;
 // avoid ambiguity for Random
 using Random = UnityEngine.Random;
 
@@ -20,6 +21,8 @@ public class LevelController : MonoBehaviour
     private int level;
     int enemiesRemaining;
     GameObject player;
+    public UnityEvent OnPause,OnResume;
+    bool paused=false;
     
     
     GameObject[] shields= new GameObject[5];
@@ -38,14 +41,29 @@ public class LevelController : MonoBehaviour
         objectText.text="Level\n" + level.ToString();
         InitiateLevel();
         player=GameObject.Find("Player");
+        Time.timeScale = 1;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if(!paused) 
+            {
+                OnPause?.Invoke();
+                Time.timeScale = 0;
+            }
+            if(paused) {
+                OnResume?.Invoke();
+                Time.timeScale = 1;
+            }
+            paused=!paused;
         }
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
 
@@ -154,6 +172,7 @@ public class LevelController : MonoBehaviour
                 SummonRowOfEnemies(11,-6.25f,4.5f);  
                 break;
             case 14:
+                objectText.text="Level\nDamage Derby";
                 GetComponent<DifficultyController>().changeMoveSpeed(5);
                 SummonRowOfEnemies(4,-6.25f,7.5f);
                 SummonRowOfEnemies(4,2.5f,7.5f);
@@ -227,10 +246,14 @@ public class LevelController : MonoBehaviour
         {
             //Finish
         }
+        else if(level==14)
+        {
+            objectText.text="Level\nDamage Derby";
+        }
         else
         {
             level++;
-            objectText.text="Level: " + level.ToString();
+            objectText.text="Level\n" + level.ToString();
             player.GetComponent<PlayerDamageController>().ChangeHealth(1);
         }
     }
