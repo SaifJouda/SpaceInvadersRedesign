@@ -48,7 +48,8 @@ public class PlayerDamageController : MonoBehaviour
             //Die();
             if(currentHealth<0) currentHealth=0;
             OnDead?.Invoke();
-            mainController.GetComponent<DifficultyController>().changeMoveSpeed(0.0001f);
+            //mainController.GetComponent<DifficultyController>().changeMoveSpeed(0.0001f);
+            Time.timeScale = 0;
         }
         livesText.text=currentHealth.ToString();
 
