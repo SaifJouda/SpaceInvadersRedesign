@@ -47,9 +47,10 @@ public class EnemyController : MonoBehaviour
             moveCooldownTimer=moveCooldown;
             rigidbody2d.MovePosition(position);
         }
-        if(transform.position.y <=-6)
+        if(transform.position.y <=-5)
         {
             player.GetComponent<PlayerDamageController>().ChangeHealth(-10);
+            MainController.GetComponent<DifficultyController>().changeMoveSpeed(0.0001f);
         }
         moveCooldown=1f/MainController.GetComponent<DifficultyController>().enemyMoveSpeed;
         Debug.Log(moveCooldown);

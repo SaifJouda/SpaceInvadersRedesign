@@ -32,7 +32,7 @@ public class DifficultyController : MonoBehaviour
         }
     }
 
-    public void changeMoveSpeed(int i)
+    public void changeMoveSpeed(float i)
     {
         slowSpeed=false;
         slowSpeedRemaining=0;
