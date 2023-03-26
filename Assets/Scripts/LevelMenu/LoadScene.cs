@@ -25,6 +25,11 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene("Settings");
     }
 
+    public void LoadDailyMissionsMenu()
+    {
+        SceneManager.LoadScene("DailyMissions");
+    }
+
     public void QuitGame()
     {
         Application.Quit();

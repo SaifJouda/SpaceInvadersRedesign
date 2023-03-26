@@ -31,9 +31,25 @@ public class SelectLevelController : MonoBehaviour
             PlayerPrefs.SetInt("SelectedLevel", level);
             PlayerPrefs.Save();
         }
+        // level 14 is bonus daily mission level
+        else if (level == 14)
+        {
+            comfirmUI.SetActive(true);
+            levelText.text = "Damage Derby?";
+            PlayerPrefs.SetInt("SelectedLevel", level);
+            PlayerPrefs.Save();
+        }
         else
         {
             BlinkCurrentLevelIndicator();
+        }
+    }
+
+    public void InvokeDailyCountDown()
+    {
+        if (!PlayerPrefs.HasKey("TimeUntilNextBonus"))
+        {
+
         }
     }
 
@@ -56,12 +72,12 @@ public class SelectLevelController : MonoBehaviour
     IEnumerator BlinkIcon(Transform obj)
     {
         int i = 0;
-        while (i < 4)
+        while (i < 3)
         {
             obj.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.2f);
             obj.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.2f);
             i++;
         }
     }

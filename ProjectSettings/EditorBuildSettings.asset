@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: f394d51879097064c902bed5ba2163e6
+  - enabled: 1
+    path: Assets/Scenes/DailyMissions.unity
+    guid: 7fa4745280efe0e44b91d915e41e6fed
   m_configObjects: {}

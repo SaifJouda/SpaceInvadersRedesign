@@ -5616,7 +5616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Key Bingings
+  m_text: Key Bindings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b9435b28c9a278419b52a5c0daa38d6, type: 2}
   m_sharedMaterial: {fileID: -7200798469880472369, guid: 7b9435b28c9a278419b52a5c0daa38d6, type: 2}
