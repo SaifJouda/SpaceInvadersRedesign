@@ -8,9 +8,8 @@ using TimeSpan = System.TimeSpan;
 
 public class DailyMissionCountDown : MonoBehaviour
 {
-    public TMP_Text timerTitle;
     public TMP_Text timerText;
-    public UnityEvent OnComplete;
+    public TMP_Text bonusText;
 
     private int secondDuration = 60;
     DateTime? currentTime;
@@ -19,7 +18,13 @@ public class DailyMissionCountDown : MonoBehaviour
     {
 
         if (!PlayerPrefs.HasKey("TimeUntilNextBonus"))
+        {
+            timerText.color = Color.green;
+            bonusText.color = Color.green;
+            bonusText.text = ("Bonus: 1000");
+            timerText.text = ("NOW!");
             return;
+        }
 
         var savedString = PlayerPrefs.GetString("TimeUntilNextBonus");
         if (long.TryParse(savedString, out long ticks))
@@ -30,9 +35,6 @@ public class DailyMissionCountDown : MonoBehaviour
         {
             currentTime = DateTime.Now;
         }
-
-        timerTitle.gameObject.SetActive(true);
-        timerText.gameObject.SetActive(true);
 
         StartCoroutine(WaitForCompletion());
     }
@@ -57,17 +59,19 @@ public class DailyMissionCountDown : MonoBehaviour
             currentSecond = Mathf.Max(secondDuration - (int)elapsed.TotalSeconds, 0);
 
             timerText.text = (new TimeSpan(0, 0, currentSecond)).ToString(@"hh\:mm\:ss");
+            timerText.color = Color.white;
+            bonusText.color = Color.gray;
+            bonusText.text = ("Bonus: 0");
 
             yield return null;
         }
 
+        timerText.color = Color.green;
+        bonusText.color = Color.green;
+        bonusText.text = ("Bonus: 1000");
+        timerText.text = ("NOW!");
         currentTime = null;
         PlayerPrefs.DeleteKey("TimeUntilNextBonus");
 
-        timerTitle.gameObject.SetActive(false);
-        timerText.gameObject.SetActive(false);
-
-        if (OnComplete != null)
-            OnComplete.Invoke();
     }
 }
