@@ -13,6 +13,7 @@ public class PowerUp : MonoBehaviour
     public GameObject healthSprite;
     public GameObject rapidSprite;
     public GameObject shieldSprite;
+    public GameObject barrierSprite;
     
     void Start() 
     {
@@ -39,7 +40,7 @@ public class PowerUp : MonoBehaviour
                 break;
             case 5:
                 typeOfItem=itemType.shieldBlocks;
-                rapidSprite.SetActive(true);
+                barrierSprite.SetActive(true);
                 break;
 
         }
