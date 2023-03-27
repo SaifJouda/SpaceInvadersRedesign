@@ -31,39 +31,40 @@ public class ShipTypeController : MonoBehaviour
         switch(typeOfShip)
         {
             case shipType.basic:
-                pathName= "DefaultShips.png";
+                pathName= "DefaultShips";
                 break;
             case shipType.green:
-                pathName= "GreenDefaultShip.png";
+                pathName= "GreenDefaultShip";
                 break;
             case shipType.yellow:
-                pathName= "YellowDefaultShip.png";
+                pathName= "YellowDefaultShip";
                 break;
             case shipType.purple:
-                pathName= "PurpleDefaultShip.png";
+                pathName= "PurpleDefaultShip";
                 break;
             case shipType.pWhite:
-                pathName= "PremiumShipWhite.png";
+                pathName= "PremiumShipWhite";
                 break;
             case shipType.pRed:
-                pathName= "PremiumShipRed.png";
+                pathName= "PremiumShipRed";
                 break;
             case shipType.pPurple:
-                pathName= "PremiumShipPurple.png";
+                pathName= "PremiumShipPurple";
                 break;
             case shipType.pYellow:
-                pathName= "PremiumShipYellow.png";
+                pathName= "PremiumShipYellow";
                 break;
             case shipType.special:
-                pathName= "SpecialShip2.png";
+                pathName= "SpecialShip2";
                 break;
             case shipType.limited:
-                pathName= "LimitedGPTEdition.png";
+                pathName= "LimitedGPTEdition";
                 break;
        
         }
-        texture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/ArtAsset/Players/"+pathName, typeof(Texture2D));
-        if(texture!=null)
+        //texture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/ArtAsset/Players/"+pathName, typeof(Texture2D));
+        texture = Resources.Load<Texture2D>("ArtAsset/Players/" + pathName);
+        if (texture!=null)
         {
             spriteRenderer.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f),450); 
         }
