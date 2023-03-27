@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using DateTime = System.DateTime;
 
 public class SelectLevelController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class SelectLevelController : MonoBehaviour
     public GameObject levelGrid;
 
     private int progressedLevel;
+    DateTime? waitTime = DateTime.Now.AddMinutes(1);
 
     public void GetComfirmation()
     {
@@ -47,9 +49,11 @@ public class SelectLevelController : MonoBehaviour
 
     public void InvokeDailyCountDown()
     {
-        if (!PlayerPrefs.HasKey("TimeUntilNextBonus"))
+        if (!PlayerPrefs.HasKey("TimeUntilNextBonus") && level == 14)
         {
-
+            Debug.Log("Invoked Timer");
+            PlayerPrefs.SetString("TimeUntilNextBonus", waitTime.Value.Ticks.ToString());
+            PlayerPrefs.Save(); 
         }
     }
 
