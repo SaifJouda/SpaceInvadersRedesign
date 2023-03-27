@@ -4172,7 +4172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 628838842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1269915e12a9bd469b13ff5931dd574, type: 3}
+  m_Script: {fileID: 11500000, guid: 028d97538c28dbc4fb157313d2c514de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultShip: {fileID: 1654531930}
@@ -4187,8 +4187,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49666e41e2d05074f92651ad57bdae0d, type: 3}
   - {fileID: 21300000, guid: 1ba51fbaa9721194fb60b6e7e5159020, type: 3}
   - {fileID: 21300000, guid: 1b33c0febcf289646b1fa2886168c311, type: 3}
-  title: {fileID: 0}
-  overlay: {fileID: 0}
+  title: {fileID: 144579611}
+  overlay: {fileID: 880862147}
   defaultCard: {fileID: 1536208952}
   premiumCard: {fileID: 282676432}
   limitedCard: {fileID: 2076230152}
@@ -4196,9 +4196,9 @@ MonoBehaviour:
   premiumCost: {fileID: 308970988}
   limitedCost: {fileID: 1294568223}
   specialCost: {fileID: 1037468684}
-  premiumPurchasePopup: {fileID: 0}
-  limitedPurchasePopup: {fileID: 0}
-  specialPurchasePopup: {fileID: 0}
+  premiumPurchasePopup: {fileID: 407303276}
+  limitedPurchasePopup: {fileID: 1751899321}
+  specialPurchasePopup: {fileID: 797258007}
   creditLabel: {fileID: 2023466643}
 --- !u!4 &628838845
 Transform:
