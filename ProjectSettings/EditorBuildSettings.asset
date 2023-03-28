@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DailyMissions.unity
     guid: 7fa4745280efe0e44b91d915e41e6fed
+  - enabled: 1
+    path: Assets/Scenes/WheelSpin.unity
+    guid: 50cfa357b63ec99469ab43a671ef6f8a
   m_configObjects: {}

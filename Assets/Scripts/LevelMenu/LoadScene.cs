@@ -31,6 +31,11 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene("DailyMissions");
     }
 
+    public void LoadWheelSpin()
+    {
+        SceneManager.LoadScene("WheelSpin");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
