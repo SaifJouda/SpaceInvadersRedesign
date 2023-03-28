@@ -12,6 +12,7 @@ public class LoadScene : MonoBehaviour
 
     public void LoadLevelSelectionMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("LevelSelection");
     }
 

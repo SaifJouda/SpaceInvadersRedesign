@@ -48,20 +48,21 @@ public class EnemyTypeController : MonoBehaviour
         switch(typeOfEnemy)
         {
             case enemyType.enemy1:
-                pathName= "EnemyType1.png";
+                pathName= "EnemyType1";
                 break;
             case enemyType.enemy2:
-                pathName= "EnemyType2.png";
+                pathName= "EnemyType2";
                 break;
             case enemyType.enemy3:
-                pathName= "EnemyType3.png";
+                pathName= "EnemyType3";
                 break;
             case enemyType.enemy4:
-                pathName= "EnemyType4.png";
+                pathName= "EnemyType4";
                 break;
         }
-        texture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/ArtAsset/Enemies/"+pathName, typeof(Texture2D));
-        if(texture!=null)
+        //texture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/ArtAsset/Enemies/"+pathName, typeof(Texture2D));
+        texture = Resources.Load<Texture2D>("ArtAsset/Enemies/" + pathName);
+        if (texture!=null)
         {
             Debug.Log(texture);
             spriteRenderer.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f),800); 
