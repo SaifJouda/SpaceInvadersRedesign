@@ -3190,9 +3190,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: b6c38901ba0e66e4da78edbb28c163b7, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: b6c38901ba0e66e4da78edbb28c163b7, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: b6c38901ba0e66e4da78edbb28c163b7, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: e165b7c075dc4ad45aeac309fe9df760, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: e165b7c075dc4ad45aeac309fe9df760, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: e165b7c075dc4ad45aeac309fe9df760, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -3237,7 +3237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b7dac159d7bdb174cb1f779f9fced448, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30b723804bc7f484baeb8bf996578738, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3980,9 +3980,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: b6c38901ba0e66e4da78edbb28c163b7, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: b6c38901ba0e66e4da78edbb28c163b7, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: b6c38901ba0e66e4da78edbb28c163b7, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 167596f661feb3849b4ddf92089800d7, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 167596f661feb3849b4ddf92089800d7, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 167596f661feb3849b4ddf92089800d7, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4027,7 +4027,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b7dac159d7bdb174cb1f779f9fced448, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6964a73d365da3b4db4fbefd90fb1fd9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
