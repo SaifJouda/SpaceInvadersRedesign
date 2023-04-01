@@ -852,6 +852,7 @@ GameObject:
   - component: {fileID: 6043389894747872086}
   - component: {fileID: 6043389894747872087}
   - component: {fileID: -2628619549171625951}
+  - component: {fileID: 7709692694586411651}
   m_Layer: 5
   m_Name: LevelFrameV1
   m_TagString: Untagged
@@ -943,6 +944,27 @@ MonoBehaviour:
   comfirmUI: {fileID: 0}
   levelText: {fileID: 0}
   levelGrid: {fileID: 0}
+--- !u!114 &7709692694586411651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6043389894747872081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1d5e80362031445afedd6832e21528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  down: 0
+  left: 0
+  right: 0
+  downArrow: {fileID: 1871837301433483277}
+  leftArrow: {fileID: 6510150112556422945}
+  rightArrow: {fileID: 3572922524259321219}
+  indicator: {fileID: 6043389895068113396}
+  frame: {fileID: 6043389894747872081}
 --- !u!1 &6043389895068113396
 GameObject:
   m_ObjectHideFlags: 0
