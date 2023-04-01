@@ -24,52 +24,60 @@ public class ShopController : MonoBehaviour
     public GameObject premiumCost;
     public GameObject limitedCost;
     public GameObject specialCost;
-
     public GameObject premiumPurchasePopup;
     public GameObject limitedPurchasePopup;
     public GameObject specialPurchasePopup;
+    public GameObject paymentPopup;
+    public GameObject paymentPopupCost;
 
+    public GameObject HPCard;
+    public GameObject MSCard;
+    public GameObject TFCard;
+    public GameObject HPcount;
+    public GameObject MScount;
+    public GameObject TFcount;
+
+    public GameObject creditScreen;
     public TextMeshProUGUI creditLabel;
 
-    //private int credits = PlayerPrefs.GetInt("Credit");
-    private int credits = 4000;
 
     // Start is called before the first frame update
     void Start()
     {
         // Update player's credit amount
+        int credits = PlayerPrefs.GetInt("Credits");
+
         creditLabel.text = credits.ToString();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Turn ship cards grey if not enough credits to purchase
-        if (credits < 3000)
-            premiumCard.GetComponent<Image>().color = new Color(0.4f, 0.4f, 0.4f);
-        if (credits < 15000)
-            limitedCard.GetComponent<Image>().color = new Color(0.4f, 0.4f, 0.4f);
-        if (credits < 20000)
-            specialCard.GetComponent<Image>().color = new Color(0.4f, 0.4f, 0.4f);
+        // Set all cards as white
+        defaultCard.GetComponent<Image>().color = new Color(1, 1, 1);
+        premiumCard.GetComponent<Image>().color = new Color(1, 1, 1);
+        limitedCard.GetComponent<Image>().color = new Color(1, 1, 1);
+        specialCard.GetComponent<Image>().color = new Color(1, 1, 1);
 
-        // Turn ship cards white and change label to "Owned" if owned
+        // Turn ship cards grey if not enough credits to purchase and unowned
         string ownPremium = PlayerPrefs.GetString("OwnPremium");
         string ownLimited = PlayerPrefs.GetString("OwnLimited");
         string ownSpecial = PlayerPrefs.GetString("OwnSpecial");
+        if (credits < 3000 && string.IsNullOrEmpty(ownPremium))
+            premiumCard.GetComponent<Image>().color = new Color(0.4f, 0.4f, 0.4f);
+        if (credits < 15000 && string.IsNullOrEmpty(ownLimited))
+            limitedCard.GetComponent<Image>().color = new Color(0.4f, 0.4f, 0.4f);
+        if (credits < 20000 && string.IsNullOrEmpty(ownSpecial))
+            specialCard.GetComponent<Image>().color = new Color(0.4f, 0.4f, 0.4f);
+
+        // Change label to "Owned" if owned
         if (!string.IsNullOrEmpty(ownPremium))
         {
             premiumCost.GetComponent<TextMeshProUGUI>().text = "Owned";
-            premiumCard.GetComponent<Image>().color = new Color(1, 1, 1);
         }
-        else if (!string.IsNullOrEmpty(ownLimited))
+        if (!string.IsNullOrEmpty(ownLimited))
         {
             limitedCost.GetComponent<TextMeshProUGUI>().text = "Owned";
-            limitedCard.GetComponent<Image>().color = new Color(1, 1, 1);
         }
-        else if (!string.IsNullOrEmpty(ownSpecial))
+        if (!string.IsNullOrEmpty(ownSpecial))
         {
             specialCost.GetComponent<TextMeshProUGUI>().text = "Owned";
-            specialCard.GetComponent<Image>().color = new Color(1, 1, 1);
         }
 
         // Turn ship cards green if equipped
@@ -100,7 +108,7 @@ public class ShopController : MonoBehaviour
             premiumShip.sprite = premiumShipArray[0];
             premiumCard.GetComponent<Image>().color = new Color(0, 1, 0);
         }
-        else if (ship == "PremiumRed")
+        else if (ship == "PremiumOrange")
         {
             premiumShip.sprite = premiumShipArray[1];
             premiumCard.GetComponent<Image>().color = new Color(0, 1, 0);
@@ -123,63 +131,112 @@ public class ShopController : MonoBehaviour
         {
             specialCard.GetComponent<Image>().color = new Color(0, 1, 0);
         }
+
+        // Update amount of powerups in inventory
+        HPcount.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("HP_Powerup").ToString();
+        MScount.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("MS_Powerup").ToString();
+        TFcount.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("TF_Powerup").ToString();
+
+        // Turn powerup cards grey if not enough credits to purchase
+        if (credits < 100)
+            HPCard.GetComponent<Image>().color = new Color(0.4f, 0.4f, 0.4f);
+        if (credits < 500)
+            MSCard.GetComponent<Image>().color = new Color(0.4f, 0.4f, 0.4f);
+        if (credits < 1000)
+            TFCard.GetComponent<Image>().color = new Color(0.4f, 0.4f, 0.4f);
     }
 
     public void PurchaseShip(string ship)
     {
-        if (ship == "PremiumWhite")
+        int credits = PlayerPrefs.GetInt("Credits");
+        if (ship == "PremiumWhite" || ship == "PremiumOrange" || ship == "PremiumYellow" || ship == "PremiumPurple")
         {
             string ownPremium = PlayerPrefs.GetString("OwnPremium");
-            if (credits < 3000)
+            if (string.IsNullOrEmpty(ownPremium))   // If ship is not owned
             {
-                AddCredits();
+                if (credits < 3000)                 // Go to credit screen if not enough credits
+                {
+                    CreditScreen();
+                }
+                else                                // Go to purchase screen if enough credits
+                {
+                    premiumPurchasePopup.SetActive(true);
+                }
             }
-            if (string.IsNullOrEmpty(ownPremium))   // Confirm purchase
-            {
-
-            }
-            else
+            else                                    // Change to ship if owned
             {
                 ChangeShip(ship);
             }
         }
-        if (ship == "Limited")
+        else if (ship == "Limited")
         {
             string ownLimited = PlayerPrefs.GetString("OwnLimited");
-            if (credits < 15000)
+            if (string.IsNullOrEmpty(ownLimited))   // If ship is not owned
             {
-                AddCredits();
+                if (credits < 15000)                // Go to credit screen if not enough credits
+                {
+                    CreditScreen();
+                }
+                else                                // Go to purchase screen if enough credits
+                {
+                    limitedPurchasePopup.SetActive(true);
+                }
             }
-            if (string.IsNullOrEmpty(ownLimited))   // Confirm purchase
-            {
-
-            }
-            else
+            else                                    // Change to ship if owned                                     
             {
                 ChangeShip(ship);
             }
-
         }
-        if (ship == "Special")
+        else if (ship == "Special")
         {
             string ownSpecial = PlayerPrefs.GetString("OwnSpecial");
-            if (credits < 20000)
+            if (string.IsNullOrEmpty(ownSpecial))   // If ship is not owned
             {
-                AddCredits();
+                if (credits < 20000)                // Go to credit screen if not enough credits
+                {
+                    CreditScreen();
+                }
+                else                                // Go to purchase screen if enough credits    
+                {
+                    specialPurchasePopup.SetActive(true);
+                }
             }
-            if (string.IsNullOrEmpty(ownSpecial))   // Confirm purchase
-            {
-
-            }
-            else
+            else                                    // Change to ship if owned  
             {
                 ChangeShip(ship);
             }
-
         }
+    }
+
+    public void ConfirmPurchase(string ship)
+    {
+        int credits = PlayerPrefs.GetInt("Credits");
+        if (ship == "Premium")
+        {
+            PlayerPrefs.SetInt("Credits", credits - 3000);
+            PlayerPrefs.SetString("OwnPremium", "Own");
+            premiumPurchasePopup.SetActive(false);
+        }
+        else if (ship == "Limited")
+        {
+            PlayerPrefs.SetInt("Credits", credits - 15000);
+            PlayerPrefs.SetString("OwnLimited", "Own");
+            premiumPurchasePopup.SetActive(false);
+        }
+        else if (ship == "Special")
+        {
+            PlayerPrefs.SetInt("Credits", credits - 20000);
+            PlayerPrefs.SetString("OwnSpecial", "Own");
+            premiumPurchasePopup.SetActive(false);
+        }
+        ReloadScene();
     }
     public void ChangeShip(string ship)
     {
+        string ownPremium = PlayerPrefs.GetString("OwnPremium");
+        string ownLimited = PlayerPrefs.GetString("OwnLimited");
+        string ownSpecial = PlayerPrefs.GetString("OwnSpecial");
+
         if (ship == "DefaultWhite")
         {
             PlayerPrefs.SetString("EquippedShip", "DefaultWhite");
@@ -201,7 +258,6 @@ public class ShopController : MonoBehaviour
             defaultShip.sprite = defaultShipArray[3];
         }
 
-        string ownPremium = PlayerPrefs.GetString("OwnPremium");
         if (!string.IsNullOrEmpty(ownPremium))
         {
             if (ship == "PremiumWhite")
@@ -209,9 +265,9 @@ public class ShopController : MonoBehaviour
                 PlayerPrefs.SetString("EquippedShip", "PremiumWhite");
                 premiumShip.sprite = premiumShipArray[0];
             }
-            else if (ship == "PremiumRed")
+            else if (ship == "PremiumOrange")
             {
-                PlayerPrefs.SetString("EquippedShip", "PremiumRed");
+                PlayerPrefs.SetString("EquippedShip", "PremiumOrange");
                 premiumShip.sprite = premiumShipArray[1];
             }
             else if (ship == "PremiumYellow")
@@ -224,17 +280,85 @@ public class ShopController : MonoBehaviour
                 PlayerPrefs.SetString("EquippedShip", "PremiumPurple");
                 premiumShip.sprite = premiumShipArray[3];
             }
-            ReloadScene();
         }
+
+        if (!string.IsNullOrEmpty(ownLimited) && ship == "Limited")
+        {
+            PlayerPrefs.SetString("EquippedShip", "Limited");
+        }
+        if (!string.IsNullOrEmpty(ownSpecial) && ship == "Special")
+        {
+            PlayerPrefs.SetString("EquippedShip", "Special");
+        }
+        ReloadScene();
     }
 
-    void AddCredits()
+    public void CreditScreen()
     {
         title.GetComponent<TextMeshProUGUI>().text = "Add Credits";
         overlay.SetActive(false);
+        creditScreen.SetActive(true);
+    }
+    public void AddCredits(string amount)
+    {
+        paymentPopup.SetActive(true);
+        paymentPopupCost.GetComponent<TextMeshProUGUI>().text = amount.ToString();
     }
 
-    void ReloadScene()
+    public void ConfirmCreditPurchase(GameObject paymentPopupCost)
+    {
+        int credits = PlayerPrefs.GetInt("Credits");
+        string cost = paymentPopupCost.GetComponent<TextMeshProUGUI>().text;
+        if (cost == "9.99")
+        {
+            PlayerPrefs.SetInt("Credits", credits + 1000);
+        }
+        else if (cost == "19.99")
+        {
+            PlayerPrefs.SetInt("Credits", credits + 3000);
+        }
+        else if (cost == "39.99")
+        {
+            PlayerPrefs.SetInt("Credits", credits + 10000);
+        }
+        else if (cost == "74.99")
+        {
+            PlayerPrefs.SetInt("Credits", credits + 20000);
+        }
+        ReloadScene();
+    }
+
+    public void PurchaseHP()
+    {
+        int credits = PlayerPrefs.GetInt("Credits");
+        if (credits >= 100)          // Purchase HP powerup
+        {
+            PlayerPrefs.SetInt("HP_Powerup", PlayerPrefs.GetInt("HP_Powerup") + 1);
+            PlayerPrefs.SetInt("Credits", credits - 100);
+            ReloadScene();
+        }
+    }
+    public void PurchaseMS()
+    {
+        int credits = PlayerPrefs.GetInt("Credits");
+        if (credits >= 500)          // Purchase HP powerup
+        {
+            PlayerPrefs.SetInt("MS_Powerup", PlayerPrefs.GetInt("MS_Powerup") + 1);
+            PlayerPrefs.SetInt("Credits", credits - 500);
+            ReloadScene();
+        }
+    }
+    public void PurchaseTF()
+    {
+        int credits = PlayerPrefs.GetInt("Credits");
+        if (credits >= 1000)          // Purchase HP powerup
+        {
+            PlayerPrefs.SetInt("TF_Powerup", PlayerPrefs.GetInt("TF_Powerup") + 1);
+            PlayerPrefs.SetInt("Credits", credits - 1000);
+            ReloadScene();
+        }
+    }
+    public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);   // Reload scene once a ship is changed
     }
