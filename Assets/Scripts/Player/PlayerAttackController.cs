@@ -18,6 +18,8 @@ public class PlayerAttackController : MonoBehaviour
     public float doubleTapTime=0;
     //public SpriteRenderer doubleTapSprite;
 
+    public AudioSource lazerSound;
+
     private KeyCode shootKeyCode;
 
     void Awake()
@@ -73,7 +75,9 @@ public class PlayerAttackController : MonoBehaviour
 
     void Attack()
     {
-        if(doubleTapTime<=0f)
+        lazerSound.Play();
+
+        if (doubleTapTime<=0f)
         {
             GameObject projectileObject = Instantiate(projectileGameObject, transform.position, transform.rotation);
             projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 20);
