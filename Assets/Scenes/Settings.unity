@@ -4659,6 +4659,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSlider: {fileID: 1387868803}
   volumeText: {fileID: 1715670005}
+  master: 0
+  music: 1
+  sfx: 0
 --- !u!114 &1252945154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6020,6 +6023,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSlider: {fileID: 1138371235}
   volumeText: {fileID: 561832701}
+  master: 0
+  music: 0
+  sfx: 1
 --- !u!114 &1465715891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8201,6 +8207,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSlider: {fileID: 1707734142}
   volumeText: {fileID: 1517782006}
+  master: 1
+  music: 0
+  sfx: 0
 --- !u!1 &2089933130
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,6 +36,8 @@ public class LevelController : MonoBehaviour
             PlayerPrefs.Save();
         }
 
+        Destroy(GameObject.FindWithTag("GameMenuMusic"));
+
         level = PlayerPrefs.GetInt("SelectedLevel");
 
         objectText.text="Level\n" + level.ToString();
