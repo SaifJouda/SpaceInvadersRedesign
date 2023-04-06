@@ -8,6 +8,7 @@ using TimeSpan = System.TimeSpan;
 
 public class DailyMissionCountDown : MonoBehaviour
 {
+    public GameObject CountDownHeader;
     public TMP_Text timerText;
     public TMP_Text bonusText;
 
@@ -19,10 +20,11 @@ public class DailyMissionCountDown : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("TimeUntilNextBonus"))
         {
-            timerText.color = Color.green;
             bonusText.color = Color.green;
             bonusText.text = ("Bonus: 1000");
-            timerText.text = ("NOW!");
+
+            CountDownHeader.SetActive(false);
+
             return;
         }
 
@@ -58,6 +60,7 @@ public class DailyMissionCountDown : MonoBehaviour
             var elapsed = DateTime.Now - currentTime.Value;
             currentSecond = Mathf.Max(secondDuration - (int)elapsed.TotalSeconds, 0);
 
+            CountDownHeader.SetActive(true);
             timerText.text = (new TimeSpan(0, 0, currentSecond)).ToString(@"hh\:mm\:ss");
             timerText.color = Color.white;
             bonusText.color = Color.gray;
@@ -66,10 +69,11 @@ public class DailyMissionCountDown : MonoBehaviour
             yield return null;
         }
 
-        timerText.color = Color.green;
         bonusText.color = Color.green;
         bonusText.text = ("Bonus: 1000");
-        timerText.text = ("NOW!");
+
+        CountDownHeader.SetActive(false);
+
         currentTime = null;
         PlayerPrefs.DeleteKey("TimeUntilNextBonus");
 

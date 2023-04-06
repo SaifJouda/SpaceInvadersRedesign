@@ -36,6 +36,8 @@ public class LevelController : MonoBehaviour
             PlayerPrefs.Save();
         }
 
+        Destroy(GameObject.FindWithTag("GameMenuMusic"));
+
         level = PlayerPrefs.GetInt("SelectedLevel");
 
         objectText.text="Level\n" + level.ToString();
@@ -255,6 +257,15 @@ public class LevelController : MonoBehaviour
             level++;
             objectText.text="Level\n" + level.ToString();
             player.GetComponent<PlayerDamageController>().ChangeHealth(1);
+
+            PlayerPrefs.SetInt("SelectedLevel", level);
+            PlayerPrefs.Save();
+            if(level > PlayerPrefs.GetInt("PlayerProgressedLevel") && level != 14)
+            {
+                PlayerPrefs.SetInt("PlayerProgressedLevel", level);
+                PlayerPrefs.Save();
+            }
+
         }
     }
 

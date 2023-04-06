@@ -18,10 +18,10 @@ public class SelectLevelController : MonoBehaviour
 
     public void GetComfirmation()
     {
-        // check for player progression (TEMPORARY DEFAULT LEVEL 7 FOR NOW)
+        // check for player progression (set to 1 if not found)
         if (!PlayerPrefs.HasKey("PlayerProgressedLevel"))
         {
-            PlayerPrefs.SetInt("PlayerProgressedLevel", 7);
+            PlayerPrefs.SetInt("PlayerProgressedLevel", 1);
             PlayerPrefs.Save();
         }
         progressedLevel = PlayerPrefs.GetInt("PlayerProgressedLevel");

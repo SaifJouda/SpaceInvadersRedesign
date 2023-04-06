@@ -14,39 +14,45 @@ public class WheelItem : MonoBehaviour
         if(typeOfItem==wheelItem.heal)
         {
             itemText.text = "+1 Heal";
-            //add heal
+            PlayerPrefs.SetInt("HP_Powerup", PlayerPrefs.GetInt("HP_Powerup") + 1);
+
         }
         else if(typeOfItem==wheelItem.doubleTap)
         {
             itemText.text = "+1 Double Tap";
-            //add doubletap
+            PlayerPrefs.SetInt("MS_Powerup", PlayerPrefs.GetInt("MS_Powerup") + 1);
+
         }
         else if(typeOfItem==wheelItem.time)
         {
             itemText.text = "+1 Time Freeze";
-            //add time freeze powerup
+            PlayerPrefs.SetInt("TF_Powerup", PlayerPrefs.GetInt("TF_Powerup") + 1);
+
         }
         else if(typeOfItem==wheelItem.coin1)
         {
-            itemText.text = "+1 Coin";
-            //add money
+            itemText.text = "+100 Coin";
+            PlayerPrefs.SetInt("Credits", PlayerPrefs.GetInt("TF_Powerup") + 100);
         }
         else if(typeOfItem==wheelItem.coin2)
         {
-            itemText.text = "+2 Coin";
-            //add money
+            itemText.text = "+250 Coin";
+            PlayerPrefs.SetInt("Credits", PlayerPrefs.GetInt("TF_Powerup") + 250);
+
         }
         else if(typeOfItem==wheelItem.coin3)
         {
-            itemText.text = "+3 Coin";
-            //add money
+            itemText.text = "+500 Coin";
+            PlayerPrefs.SetInt("Credits", PlayerPrefs.GetInt("TF_Powerup") + 500);
+
         }
         else if(typeOfItem==wheelItem.coin4)
         {
-            itemText.text = "+4 Coin";
-            //add money
+            itemText.text = "+1000 Coin";
+            PlayerPrefs.SetInt("Credits", PlayerPrefs.GetInt("TF_Powerup") + 1000);
+
         }
-       
+
     }
 
 }
